@@ -22,8 +22,20 @@ public class CrudDemoApplication {
         return runner -> {
 //            createStudent(studentDAO);
 //            readStudent(1, studentDAO);
-            queryStudent(studentDAO);
+//            queryStudent(studentDAO);
+            findStudentByLastName(studentDAO);
         };
+    }
+
+    private void findStudentByLastName(StudentDAO studentDAO) {
+        List<Student> students = studentDAO.findByLastName("Tran");
+
+        if (students.isEmpty()) {
+            System.out.println("Can't find any student");
+        } else
+            for (Student student : students) {
+                System.out.println(student);
+            }
     }
 
     private void queryStudent(StudentDAO studentDAO) {
